@@ -5,7 +5,6 @@ class TestNode(unittest.TestCase):
     def setUp(self):
         self.node = Node(1)
 
-
     def test_value(self):
         self.assertEqual(self.node.value, 1)
 
@@ -19,7 +18,21 @@ class TestNode(unittest.TestCase):
 
 
 class TestBinaryTree(unittest.TestCase):
-    
+
+    def setUp(self):
+        rootNode = Node(1)
+        self.root = rootNode
+
+    def test_has_root(self):
+        self.assertEqual(self.root, rootNode)
+
+    def test_insert(self):
+        node2 = Node(2)
+        node3 = Node(3)
+        self.insert(node2)
+        self.insert(node3)
+        self.assertEqual(self.root.left_child, node2)                self.assertEqual(self.root.right_child, node3)
+
 
 if __name__ == '__main__':
     unittest.main()
