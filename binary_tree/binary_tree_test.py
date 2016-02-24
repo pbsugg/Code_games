@@ -41,6 +41,28 @@ class BinaryTreeTestCase(unittest.TestCase):
         root = self.binary_tree.root
         self.assertEqual(root.value, 1)
 
+    def test_insert_simple(self):
+        root = self.binary_tree.root
+        node2 = Node(2)
+        self.binary_tree.insert(root, node2)
+        self.assertEqual(root.left_child, node2)
+        node3 = Node(3)
+        self.binary_tree.insert(root, node3)
+        self.assertEqual(root.right_child, node3)
+        node4 = Node(4)
+        self.binary_tree.insert(root, node4)
+        self.assertEqual(root.right_child.left_child, node4)
+        node0 = Node(0)
+        self.binary_tree.insert(root, node0)
+        self.assertEqual(root.left_child.left_child, node0)
+        node5 = Node(5)
+        self.binary_tree.insert(root, node5)
+        self.assertEqual(root.right_child.right_child, node5)
+        node6 = Node(6)
+        self.binary_tree.insert(root, node6)
+        self.assertEqual(root.right_child.right_child.left_child, node6)
+
+
 
 
 if __name__ == '__main__':

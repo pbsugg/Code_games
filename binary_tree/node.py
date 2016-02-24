@@ -8,6 +8,12 @@ class Node:
         self.left_child = None
         self.right_child = None
 
+    def space(self):
+        if self.left_child == None or self.right_child == None:
+            return True
+        else:
+            return False
+
     #returns none if full
     def insert(self, node_to_insert):
         if self.left_child == None:
