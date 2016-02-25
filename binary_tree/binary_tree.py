@@ -1,5 +1,5 @@
 from node import Node
-from Queue import Queue
+from Queue import Queue, LifoQueue
 
 
 
@@ -9,33 +9,13 @@ class BinaryTree:
         self.root = root
         self.return_array = []
 
-
-    """
-    Rule:
-    INPUT: current_node
-    Create a "holding queue"
-    IF either child of current_node is empty:
-        return (node_insert node)
-    ELSE
-        put both children in the holding stack:
-        run the insert function recursively on these children
-
-
-
-    ElSIF node_to_insert value is less than or equal current_node
-        tree_insert (recursively) to left
-    ELSE
-        tree_insert (recursively) to right
-
-    """
-
     #should start with root here
-    #really looking for a breadth-first insert
+    #breadth-first insert
     def insert(self, current_node, node_to_insert):
-        # in case current_node is empty
+        # edge case: current_node is empty
         if current_node.space() == True:
             return current_node.insert(node_to_insert)
-        #for all other cases, start building a queue
+        #for all other cases, start building a queue and checking
         else:
             holding_queue = Queue()
             holding_queue.put(current_node.left_child)
@@ -53,3 +33,49 @@ class BinaryTree:
             self.visit_in_order(starting_node.left_child)
             self.return_array.append(starting_node.value)
             self.visit_in_order(starting_node.right_child)
+
+    def visit_pre_order(self, starting_node):
+        if starting_node != None:
+            self.return_array.append(starting_node.value)
+            self.visit_pre_order(starting_node.left_child)
+            self.visit_pre_order(starting_node.right_child)
+
+    def visit_post_order(self, starting_node):
+        if starting_node != None:
+            self.visit_post_order(starting_node.left_child)
+            self.visit_post_order(starting_node.right_child)
+            self.return_array.append(starting_node.value)
+
+    """
+    Input: starting_node
+    Aux data structure: stack (LifoQueue)
+    var done = False
+    Pseudo:
+    current_node == starting_node
+    WHILE done = False
+        IF current_node == True
+            Push the current node
+            Make the left child the current node (current = None if no left child)
+        ELSE
+            IF stack.empty() == True
+                done = True
+            ELSE
+                current = stack.get()
+                add current.value to output_array
+                current = right_child
+    """
+
+    def visit_in_order_iterative(self, current_node):
+        stack = LifoQueue()
+        done = False
+        while done == False:
+            if current_node:
+                stack.put(current_node)
+                current_node = current_node.left_child
+            else:
+                if stack.empty():
+                    done = True
+                else:
+                    current_node = stack.get()
+                    self.return_array.append(current.value)
+                    current = current_node.right_child

@@ -65,21 +65,36 @@ class BinaryTreeTestCase(unittest.TestCase):
         for node in range(2,8):
             insert_node = Node(node)
             self.binary_tree.insert(root, insert_node)
-        # print(root.left_child.value)
-        # print(root.right_child.value)
         self.binary_tree.visit_in_order(root)
         self.assertEqual(self.binary_tree.return_array, [4, 2, 5, 1, 6, 3, 7])
 
 
     def test_visit_pre_order(self):
         root = self.binary_tree.root
-        for node in range(2,15):
+        for node in range(2,16):
             insert_node = Node(node)
             self.binary_tree.insert(root, insert_node)
         self.binary_tree.visit_pre_order(root)
+        self.assertEqual(self.binary_tree.return_array, ([1, 2, 4, 8, 9, 5, 10,
+                                                        11, 3, 6, 12, 13, 7, 14, 15]))
 
     def test_visit_post_order(self):
-        pass
+        root = self.binary_tree.root
+        for node in range(2,16):
+            insert_node = Node(node)
+            self.binary_tree.insert(root, insert_node)
+        self.binary_tree.visit_post_order(root)
+        self.assertEqual(self.binary_tree.return_array, ([8, 9, 4, 10, 11, 5, 2, 12,
+                                                        13, 6, 14, 15, 7, 3, 1]))
+
+    def test_visit_in_order_iterative(self):
+        root = self.binary_tree.root
+        for node in range(2,16):
+            insert_node = Node(node)
+            self.binary_tree.insert(root, insert_node)
+        self.binary_tree.visit_in_order(root)
+        self.assertEqual(self.binary_tree.return_array, [8, 4, 9, 2, 10, 5, 11, 1,
+                                                        12, 6, 13, 3, 14, 7, 15])
 
 
 if __name__ == '__main__':
