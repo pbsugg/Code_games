@@ -71,7 +71,7 @@ class BinaryTreeTestCase(unittest.TestCase):
 
     def test_visit_pre_order(self):
         root = self.binary_tree.root
-        for node in range(2,15):
+        for node in range(2,16):
             insert_node = Node(node)
             self.binary_tree.insert(root, insert_node)
         self.binary_tree.visit_pre_order(root)
@@ -80,7 +80,7 @@ class BinaryTreeTestCase(unittest.TestCase):
 
     def test_visit_post_order(self):
         root = self.binary_tree.root
-        for node in range(2,15):
+        for node in range(2,16):
             insert_node = Node(node)
             self.binary_tree.insert(root, insert_node)
         self.binary_tree.visit_post_order(root)

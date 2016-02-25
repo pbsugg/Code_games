@@ -33,3 +33,15 @@ class BinaryTree:
             self.visit_in_order(starting_node.left_child)
             self.return_array.append(starting_node.value)
             self.visit_in_order(starting_node.right_child)
+
+    def visit_pre_order(self, starting_node):
+        if starting_node != None:
+            self.return_array.append(starting_node.value)
+            self.visit_pre_order(starting_node.left_child)
+            self.visit_pre_order(starting_node.right_child)
+
+    def visit_post_order(self, starting_node):
+        if starting_node != None:
+            self.visit_post_order(starting_node.left_child)
+            self.visit_post_order(starting_node.right_child)
+            self.return_array.append(starting_node.value)
