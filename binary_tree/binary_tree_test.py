@@ -68,17 +68,20 @@ class BinaryTreeTestCase(unittest.TestCase):
 
     def test_visit_in_order(self):
         root = self.binary_tree.root
-        for node in range(2,7):
-            node = Node(node)
-            self.binary_tree.insert(root, node)
-        self.assertEqual(self.binary_tree.visitInOrder(root), [4, 2, 5, 1, 6, 3, 7])
+        for node in range(2,8):
+            insert_node = Node(node)
+            self.binary_tree.insert(root, insert_node)
+        # print(root.left_child.value)
+        # print(root.right_child.value)
+        self.binary_tree.visit_in_order(root)
+        self.assertEqual(self.binary_tree.return_array, [4, 2, 5, 1, 6, 3, 7])
 
 
     def test_visit_pre_order(self):
         root = self.binary_tree.root
         for node in range(2,15):
-            node = Node(node)
-            self.binary_tree.insert(root, node)
+            insert_node = Node(node)
+            self.binary_tree.insert(root, insert_node)
 
     def test_visit_post_order(self):
         pass
