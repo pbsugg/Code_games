@@ -2,7 +2,6 @@ import unittest
 from node import Node
 from binary_tree import BinaryTree
 
-
 class NodeTestCase(unittest.TestCase):
 
     def setUp(self):
@@ -41,44 +40,43 @@ class BinaryTreeTestCase(unittest.TestCase):
         root = self.binary_tree.root
         self.assertEqual(root.value, 1)
 
-    def test_insert_simple(self):
+    def test_insert_3_level_node(self):
         root = self.binary_tree.root
-        node2 = Node(2)
-        self.binary_tree.insert(root, node2)
-        self.assertEqual(root.left_child, node2)
-        node3 = Node(3)
-        self.binary_tree.insert(root, node3)
-        self.assertEqual(root.right_child, node3)
-        node4 = Node(4)
-        self.binary_tree.insert(root, node4)
-        self.assertEqual(root.right_child.left_child, node4)
-        node0 = Node(0)
-        self.binary_tree.insert(root, node0)
-        self.assertEqual(root.left_child.left_child, node0)
-        node5 = Node(5)
-        self.binary_tree.insert(root, node5)
-        self.assertEqual(root.right_child.right_child, node5)
-        node6 = Node(6)
-        self.binary_tree.insert(root, node6)
-        self.assertEqual(root.right_child.right_child.left_child, node6)
-        node7 = Node(7)
-        self.binary_tree.insert(root, node7)
-        self.assertEqual(root.right_child.right_child.right_child, node7)
-
+        for node in range(2,16):
+            new_node = Node(node)
+            self.binary_tree.insert(root, new_node)
+        self.assertEqual(root.left_child.value, 2)
+        self.assertEqual(root.right_child.value, 3)
+        self.assertEqual(root.left_child.left_child.value, 4)
+        self.assertEqual(root.left_child.right_child.value, 5)
+        self.assertEqual(root.right_child.left_child.value, 6)
+        self.assertEqual(root.right_child.right_child.value, 7)
+        self.assertEqual(root.left_child.left_child.left_child.value, 8)
+        self.assertEqual(root.left_child.left_child.right_child.value, 9)
+        self.assertEqual(root.left_child.right_child.left_child.value, 10)
+        self.assertEqual(root.left_child.right_child.right_child.value, 11)
+        self.assertEqual(root.right_child.left_child.left_child.value, 12)
+        self.assertEqual(root.right_child.left_child.right_child.value,13)
+        self.assertEqual(root.right_child.right_child.left_child.value, 14)
+        self.assertEqual(root.right_child.right_child.right_child.value, 15)
 
     def test_visit_in_order(self):
         root = self.binary_tree.root
-        for node in range(2,7):
-            node = Node(node)
-            self.binary_tree.insert(root, node)
-        self.assertEqual(self.binary_tree.visitInOrder(root), [4, 2, 5, 1, 6, 3, 7])
+        for node in range(2,8):
+            insert_node = Node(node)
+            self.binary_tree.insert(root, insert_node)
+        # print(root.left_child.value)
+        # print(root.right_child.value)
+        self.binary_tree.visit_in_order(root)
+        self.assertEqual(self.binary_tree.return_array, [4, 2, 5, 1, 6, 3, 7])
 
 
     def test_visit_pre_order(self):
         root = self.binary_tree.root
         for node in range(2,15):
-            node = Node(node)
-            self.binary_tree.insert(root, node)
+            insert_node = Node(node)
+            self.binary_tree.insert(root, insert_node)
+        self.binary_tree.visit_pre_order(root)
 
     def test_visit_post_order(self):
         pass

@@ -1,15 +1,27 @@
 from node import Node
+from Queue import Queue
+
+
 
 class BinaryTree:
 
     def __init__(self, root):
         self.root = root
+        self.return_array = []
+
 
     """
     Rule:
-    DON'T insert duplicate keys (if equal to current value, do nothing)
+    INPUT: current_node
+    Create a "holding queue"
     IF either child of current_node is empty:
-        node_insert node
+        return (node_insert node)
+    ELSE
+        put both children in the holding stack:
+        run the insert function recursively on these children
+
+
+
     ElSIF node_to_insert value is less than or equal current_node
         tree_insert (recursively) to left
     ELSE
@@ -18,10 +30,26 @@ class BinaryTree:
     """
 
     #should start with root here
+    #really looking for a breadth-first insert
     def insert(self, current_node, node_to_insert):
+        # in case current_node is empty
         if current_node.space() == True:
-            current_node.insert(node_to_insert)
-        elif current_node.value >= node_to_insert.value:
-            self.insert(current_node.left_child, node_to_insert)
-        elif current_node.value <= node_to_insert.value:
-            self.insert(current_node.right_child, node_to_insert)
+            return current_node.insert(node_to_insert)
+        #for all other cases, start building a queue
+        else:
+            holding_queue = Queue()
+            holding_queue.put(current_node.left_child)
+            holding_queue.put(current_node.right_child)
+            while holding_queue.empty() == False:
+                    possible_node = holding_queue.get()
+                    if possible_node.space():
+                        return possible_node.insert(node_to_insert)
+                    else:
+                        holding_queue.put(possible_node.left_child)
+                        holding_queue.put(possible_node.right_child)
+
+    def visit_in_order(self, starting_node):
+        if starting_node != None:
+            self.visit_in_order(starting_node.left_child)
+            self.return_array.append(starting_node.value)
+            self.visit_in_order(starting_node.right_child)
