@@ -1,5 +1,5 @@
 from node import Node
-from Queue import Queue
+from Queue import Queue, LifoQueue
 
 
 
@@ -45,3 +45,37 @@ class BinaryTree:
             self.visit_post_order(starting_node.left_child)
             self.visit_post_order(starting_node.right_child)
             self.return_array.append(starting_node.value)
+
+    """
+    Input: starting_node
+    Aux data structure: stack (LifoQueue)
+    var done = False
+    Pseudo:
+    current_node == starting_node
+    WHILE done = False
+        IF current_node == True
+            Push the current node
+            Make the left child the current node (current = None if no left child)
+        ELSE
+            IF stack.empty() == True
+                done = True
+            ELSE
+                current = stack.get()
+                add current.value to output_array
+                current = right_child
+    """
+
+    def visit_in_order_iterative(self, current_node):
+        stack = LifoQueue()
+        done = False
+        while done == False:
+            if current_node:
+                stack.put(current_node)
+                current_node = current_node.left_child
+            else:
+                if stack.empty():
+                    done = True
+                else:
+                    current_node = stack.get()
+                    self.return_array.append(current.value)
+                    current = current_node.right_child
