@@ -12,7 +12,7 @@ class BinaryTree:
     #should start with root here
     #breadth-first insert
     def insert(self, current_node, node_to_insert):
-        # in case current_node is empty
+        # edge case: current_node is empty
         if current_node.space() == True:
             return current_node.insert(node_to_insert)
         #for all other cases, start building a queue and checking
