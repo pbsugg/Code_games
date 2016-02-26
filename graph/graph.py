@@ -11,4 +11,8 @@ class Graph:
         node.visited = True
 
     def depth_first_search(self, root):
-        
+        root.visited = True
+        self.search_output.append(root.name)
+        for node in root.children:
+            if node.visited == False:
+                self.depth_first_search(node)
