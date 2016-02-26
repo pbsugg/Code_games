@@ -17,5 +17,18 @@ class GraphTestCase(unittest.TestCase):
         node1.children = [node4, node3]
         node2.children = [node1]
         node3.children = [node2, node4]
+        self.graph = Graph([node0, node1, node2, node3, node4, node5])
 
-        
+    def test_depth_first_search(self):
+        self.graph.depth_first_search(node0)
+        result = self.graph.search_output
+        self.assertEqual(result, [node0, node1, node3, node2, node4, node5])
+
+    def test_breadth_first_search(self):
+        self.graph.breadth_first_search(node0)
+        result = self.graph.search_output
+        self.assertEqual(result, [node0, node1, node4, node5, node3, node2])
+
+
+if __name__ == "__main__":
+    unittest.main()
