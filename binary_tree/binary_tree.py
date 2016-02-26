@@ -47,6 +47,8 @@ class BinaryTree:
             self.return_array.append(starting_node.value)
 
     """
+    iterative in_order
+
     Input: starting_node
     Aux data structure: stack (LifoQueue)
     var done = False
