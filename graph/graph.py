@@ -9,7 +9,6 @@ class Graph:
 
     def visit(self, node):
         node.visited = True
-        print node.name
         self.search_output.append(node.name)
 
     #maybe try this iteratively as well

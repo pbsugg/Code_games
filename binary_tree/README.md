@@ -1,9 +1,6 @@
-Implement the following methods for a basic binary tree:
+Implement the following methods for a basic binary tree (test-driven):
 
-Insert
-
-PrintInOrder (recursive and non-recursive)
-
+Insert (inserting "breadth-first" to keep tree balanced)
+PrintInOrder (recursive and iterative)
 PrintPreOrder
-
 PrintPostOrder
