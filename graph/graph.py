@@ -29,3 +29,21 @@ class Graph:
                 for child in current_node.children:
                     if child.visited == False:
                         queue.put(child)
+
+
+    """
+    4.1 Given directed graph, find out whether there is a route between two nodes.  Output the route
+
+    Pseudo: have to search a *single* path each time, not multiple, so I can keep track
+
+    Idea is that you maintain *one* path at a time, and keep track of where going
+    Get a node, put onto the stack
+    IF it has children, pick the first one
+        add to output_array
+        if current_value = search_value, RETURN the array
+        Keep following that pattern, checking until you run out of options
+    IF path dead-ends, go back to the beginning, reset the output_array
+
+    """
+
+        
