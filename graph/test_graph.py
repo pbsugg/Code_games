@@ -40,9 +40,18 @@ class GraphTestCase(unittest.TestCase):
         result = self.graph.search_output
         self.assertEqual(result, [0, 1, 4, 5, 3, 2])
 
-    def test_success_search_for_path(self):
+    def test_search_for_path_one_step(self):
+        result = self.graph.search_for_path(self.graph.nodes[0], 5)
+        self.assertEqual(result, True)
 
-    def test_fail_search_for_path(self):
-        pass
+    def test_search_for_path_multi_step(self):
+        result = self.graph.search_for_path(self.graph.nodes[0], 2)
+        self.assertEqual(result, True)
+
+    def test_failed_search_for_path(self):
+        result = self.graph.search_for_path(self.graph.nodes[2], 0)
+        self.assertEqual(result, False)
+
+
 if __name__ == "__main__":
     unittest.main()
