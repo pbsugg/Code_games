@@ -46,4 +46,5 @@ class Graph:
 
     """
 
-        
+    def search_for_path(self, start_node, node_to_find):
+            pass

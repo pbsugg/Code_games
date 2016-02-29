@@ -7,7 +7,8 @@ class GraphTestCase(unittest.TestCase):
 
     #6 nodes, see connections on McDowell, p. 107
 
-    def test_depth_first_search(self):
+
+    def setUp(self):
         node0 = NodeGraph(0)
         node1 = NodeGraph(1)
         node2 = NodeGraph(2)
@@ -19,7 +20,12 @@ class GraphTestCase(unittest.TestCase):
         node2.children = [node1]
         node3.children = [node2, node4]
         self.graph = Graph([node0, node1, node2, node3, node4, node5])
-        self.graph.depth_first_search(node0)
+
+    def tearDown(self):
+        self.graph = None
+
+    def test_depth_first_search(self):
+        self.graph.depth_first_search(self.graph.nodes[0])
         result = self.graph.search_output
         """
         technically the children of each node have to be organized by value
@@ -30,35 +36,13 @@ class GraphTestCase(unittest.TestCase):
         self.assertEqual(result, [0, 1, 3, 2, 4, 5])
 
     def test_breadth_first_search(self):
-        node0 = NodeGraph(0)
-        node1 = NodeGraph(1)
-        node2 = NodeGraph(2)
-        node3 = NodeGraph(3)
-        node4 = NodeGraph(4)
-        node5 = NodeGraph(5)
-        node0.children = [node1, node4, node5]
-        node1.children = [node3, node4]
-        node2.children = [node1]
-        node3.children = [node2, node4]
-        self.graph = Graph([node0, node1, node2, node3, node4, node5])
-        self.graph.breadth_first_search(node0)
+        self.graph.breadth_first_search(self.graph.nodes[0])
         result = self.graph.search_output
         self.assertEqual(result, [0, 1, 4, 5, 3, 2])
 
-    def test_successful_search_for_node(self):
-        node0 = NodeGraph(0)
-        node1 = NodeGraph(1)
-        node2 = NodeGraph(2)
-        node3 = NodeGraph(3)
-        node4 = NodeGraph(4)
-        node5 = NodeGraph(5)
-        node0.children = [node1, node4, node5]
-        node1.children = [node3, node4]
-        node2.children = [node1]
-        node3.children = [node2, node4]
-        self.graph = Graph([node0, node1, node2, node3, node4, node5])
+    def test_success_search_for_path(self):
 
-
-
+    def test_fail_search_for_path(self):
+        pass
 if __name__ == "__main__":
     unittest.main()
