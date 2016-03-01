@@ -31,14 +31,14 @@ class BinaryTree:
 
     def print_breadth_first(self, starting_node):
         queue = Queue()
-        self.return_array.append(starting_node.value)
-        queue.put(starting_node.value)
+        queue.put(starting_node)
         while not queue.empty():
             current_node = queue.get()
-            queue.put(current_node.left_child)
-            queue.put(current_node.right_child)
+            if current_node.left_child:
+                queue.put(current_node.left_child)
+            if current_node.right_child:
+                queue.put(current_node.right_child)
             self.return_array.append(current_node.value)
-
 
 
     def visit_in_order(self, starting_node):

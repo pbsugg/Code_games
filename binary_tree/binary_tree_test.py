@@ -38,7 +38,7 @@ class BinaryTreeTestCase(unittest.TestCase):
 
     def test_print_breadth_first(self):
         root = self.binary_tree.root
-        for node in range(2, 16)
+        for node in range(2, 16):
             new_node = Node(node)
             self.binary_tree.insert(root, new_node)
         self.binary_tree.print_breadth_first(root)
