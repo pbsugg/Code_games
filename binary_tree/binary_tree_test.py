@@ -1,4 +1,4 @@
-import unittest 
+import unittest
 from node import Node
 from binary_tree import BinaryTree
 
@@ -35,6 +35,15 @@ class BinaryTreeTestCase(unittest.TestCase):
         root_node = Node(1)
         binary_tree = BinaryTree(root_node)
         self.binary_tree = binary_tree
+
+    def test_print_breadth_first(self):
+        root = self.binary_tree.root
+        for node in range(2, 16):
+            new_node = Node(node)
+            self.binary_tree.insert(root, new_node)
+        self.binary_tree.print_breadth_first(root)
+        result = self.binary_tree.return_array
+        self.assertEqual(result, [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])
 
     def test_root(self):
         root = self.binary_tree.root
@@ -96,6 +105,20 @@ class BinaryTreeTestCase(unittest.TestCase):
         self.assertEqual(self.binary_tree.return_array, [8, 4, 9, 2, 10, 5, 11, 1,
                                                         12, 6, 13, 3, 14, 7, 15])
 
+    def test_insert_array_binary_tree_even(self):
+        test_array1 = [1, 3, 5, 10, 15, 24, 38, 40, 45, 55]
+        self.binary_tree.sort_array_binary_tree(test_array1)
+        self.binary_tree.print_breadth_first
+        result = self.binary_tree.return_array
+        self.assertEqual(result, [111, 4, 145, 6, 14, 234, 444, 43, 94, 555, 4566] )
+
+
+    def test_insert_array_binary_tree_odd(self):
+        test_array2 = [4, 6, 14, 43, 94, 111, 145, 234, 444, 555, 4566]
+        self.binary_tree.sort_array_binary_tree(test_array2)
+        self.binary_tree.print_breadth_first
+        result = self.binary_tree.return_array
+        self.binary_tree.sort_array_binary_tree(test_array2, [24, 1, 38, 3, 5, 40, 45, 10, 15, 55])
 
 if __name__ == '__main__':
     unittest.main()
