@@ -1,4 +1,4 @@
-import unittest 
+import unittest
 from node import Node
 from binary_tree import BinaryTree
 
@@ -96,6 +96,13 @@ class BinaryTreeTestCase(unittest.TestCase):
         self.assertEqual(self.binary_tree.return_array, [8, 4, 9, 2, 10, 5, 11, 1,
                                                         12, 6, 13, 3, 14, 7, 15])
 
+    def test_insert_array_binary_tree(self):
+        test_array1 = [1, 3, 5, 10, 15, 24, 38, 40, 45, 55]
+        test_array2 = [4, 6, 14, 43, 94, 111, 145, 234, 444, 555, 4566]
+        self.binary_tree.sort_array_binary_tree(test_array1)
+        result =  self.binary_tree.return_array
+        self.assertEqual(self.binary_tree.return_array, [111, 4, 145, 6, 14, 234, 444, 43, 94, 555, 4566] )
+        self.binary_tree.sort_array_binary_tree(test_array2, [24, 1, 38, 3, 5, 40, 45, 10, 15, 55])
 
 if __name__ == '__main__':
     unittest.main()

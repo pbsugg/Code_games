@@ -28,6 +28,9 @@ class BinaryTree:
                         holding_queue.put(possible_node.left_child)
                         holding_queue.put(possible_node.right_child)
 
+    def visit_breadth_first(self, starting_node):
+        
+
     def visit_in_order(self, starting_node):
         if starting_node != None:
             self.visit_in_order(starting_node.left_child)
@@ -81,3 +84,30 @@ class BinaryTree:
                     current_node = stack.get()
                     self.return_array.append(current.value)
                     current = current_node.right_child
+
+
+    """
+    4.2 Given a sorted increasing-order array with unique integers, write algorithm to create a minimal-height binary search tree
+
+    ex [1, 3, 5, 10, 15, 24, 38, 40, 35, 45]
+    Defn: binary search tree:
+    left side of tree > n > right side of tree
+
+    Pseudo:
+    make everyting a node
+    Have to divide this array in half, insert in order from there
+    get (num_elements/2) position-this is root
+    everything above (num_elements/2) position goes in another list (right side)
+    other elements go on left_side_list
+
+    insert(left_side_list[0])
+    insert(right_side_list[0])
+    for x in left_side_list:
+        insert(x)
+    for x in right_side_list:
+        insert(x)
+    """
+
+    def sort_array_binary_tree(self, array):
+
+        middle_node = (len(array) / 2)
