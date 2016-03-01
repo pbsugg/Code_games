@@ -36,6 +36,15 @@ class BinaryTreeTestCase(unittest.TestCase):
         binary_tree = BinaryTree(root_node)
         self.binary_tree = binary_tree
 
+    def test_print_breadth_first(self):
+        root = self.binary_tree.root
+        for node in range(2, 16)
+            new_node = Node(node)
+            self.binary_tree.insert(root, new_node)
+        self.binary_tree.print_breadth_first(root)
+        result = self.binary_tree.return_array
+        self.assertEqual(result, [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])
+
     def test_root(self):
         root = self.binary_tree.root
         self.assertEqual(root.value, 1)

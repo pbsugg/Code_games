@@ -28,8 +28,18 @@ class BinaryTree:
                         holding_queue.put(possible_node.left_child)
                         holding_queue.put(possible_node.right_child)
 
-    def visit_breadth_first(self, starting_node):
-        
+
+    def print_breadth_first(self, starting_node):
+        queue = Queue()
+        self.return_array.append(starting_node.value)
+        queue.put(starting_node.value)
+        while not queue.empty():
+            current_node = queue.get()
+            queue.put(current_node.left_child)
+            queue.put(current_node.right_child)
+            self.return_array.append(current_node.value)
+
+
 
     def visit_in_order(self, starting_node):
         if starting_node != None:
