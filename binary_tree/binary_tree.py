@@ -119,5 +119,7 @@ class BinaryTree:
     """
 
     def sort_array_binary_tree(self, array):
-
+        for index, pre_node in enumerate(array):
+            array[index] = Node(pre_node)
         middle_node = (len(array) / 2)
+        
