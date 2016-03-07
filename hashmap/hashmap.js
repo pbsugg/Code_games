@@ -1,11 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Javascript test file</title>
-  </head>
-  <body>
-<script type="text/javascript">
+// <!DOCTYPE html>
+// <html lang="en">
+//   <head>
+//     <meta charset="utf-8">
+//     <title>Javascript test file</title>
+//   </head>
+//   <body>
+// <script type="text/javascript">
+
  /*
 
 Block comment
@@ -39,21 +40,21 @@ var destroy = function(key){
 
 }
 
-function hashTable() {
+// function hashTable() {
+//
+//   this.buckets = buckets,
+//   this.size = function(){
+//
+//   }
+//   this.hash = hash,
+//   match: match,
+//   destroy: destroy,
+//   table: []
+//
+// }
 
-  this.buckets = buckets,
-  this.size = function(){
-
-  }
-  this.hash = hash,
-  match: match,
-  destroy: destroy,
-  table: []
-
-}
-
-
-
-
-  </body>
-</html>
+//
+//
+//
+//   </body>
+// </html>
