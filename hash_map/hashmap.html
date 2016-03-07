@@ -39,10 +39,13 @@ var destroy = function(key){
 
 }
 
-var hashTable = {
+function hashTable() {
 
-  buckets: buckets,
-  hash: hash,
+  this.buckets = buckets,
+  this.size = function(){
+
+  }
+  this.hash = hash,
   match: match,
   destroy: destroy,
   table: []
@@ -50,11 +53,7 @@ var hashTable = {
 }
 
 
-var linkedList = function(){
-
-}
 
 
-</script>
   </body>
 </html>
