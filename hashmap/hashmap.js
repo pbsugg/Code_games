@@ -1,15 +1,6 @@
-// <!DOCTYPE html>
-// <html lang="en">
-//   <head>
-//     <meta charset="utf-8">
-//     <title>Javascript test file</title>
-//   </head>
-//   <body>
-// <script type="text/javascript">
 
  /*
 
-Block comment
 Hashtable Object (basically an array of linked lists)
 
 Initialize:
@@ -40,21 +31,15 @@ var destroy = function(key){
 
 }
 
-// function hashTable() {
-//
-//   this.buckets = buckets,
-//   this.size = function(){
-//
-//   }
-//   this.hash = hash,
-//   match: match,
-//   destroy: destroy,
-//   table: []
-//
-// }
+function hashTable() {
 
-//
-//
-//
-//   </body>
-// </html>
+  this.buckets = buckets,
+  this.size = function(){
+
+  }
+  this.hash = hash,
+  this.match= match,
+  this.destroy = destroy,
+  this.table = []
+
+}
