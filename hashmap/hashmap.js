@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Javascript test file</title>
-  </head>
-  <body>
-<script type="text/javascript">
+
  /*
 
-Block comment
 Hashtable Object (basically an array of linked lists)
 
 Initialize:
@@ -46,14 +38,8 @@ function hashTable() {
 
   }
   this.hash = hash,
-  match: match,
-  destroy: destroy,
-  table: []
+  this.match= match,
+  this.destroy = destroy,
+  this.table = []
 
 }
-
-
-
-
-  </body>
-</html>

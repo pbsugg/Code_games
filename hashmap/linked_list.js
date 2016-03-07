@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Javascript test file</title>
-  </head>
-  <body>
-<script type="text/javascript">
 
 /*
 
@@ -49,7 +41,3 @@ function linkedList(headNode) {
   }
 
 }
-
-  </script>
-  </body>
-</html>
