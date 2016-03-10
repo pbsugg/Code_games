@@ -13,9 +13,9 @@ function listNode(value) {
 
 }
 
-function linkedList(headNode) {
+function linkedList(head) {
 
-  this.head = headNode;
+  this.head = head;
   this.traverseToEnd = function(){
     current_node = this.head;
     while (current_node.next){
@@ -29,15 +29,42 @@ function linkedList(headNode) {
       return(nodeToAdd);
   }
   this.getNode = function(value){
-    currentNode = this.head;
+    var currentNode = this.head;
     while(currentNode && currentNode.value != value){
       currentNode = currentNode.next
     }
     return(currentNode)
     // returns null if not in linkedList
   }
-  this.deleteNode = function(){
+  
+  this.deleteNode = function(value){
 
+	var currentNode = this.head
+	var nextNode = currentNode.next
+	if(currentNode.value == value){
+	    	// value is at head
+		this.head = nextNode 	
+		return(this.head)
+	}
+		
+	while(nextNode != null){
+		if(nextNode.value == value){
+			var newNextNode = nextNode.next
+			    if(newNextNode == null){
+				// deleting at tail
+				return(currentNode.next = null) 
+			    }
+			    else{
+				return(currentNode.next = newNextNode) 
+			    }
+		}	
+		else{
+			currentNode = nextNode
+			nextNode = nextNode.next
+		}
+	}
+	
   }
+
 
 }
