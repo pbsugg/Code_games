@@ -25,7 +25,10 @@ Inputs (attributes):
  */
 
 var getKey = function(itemToAdd){
-
+	stringified = itemToAdd.toString()
+	randomStringPosition = Math.floor(Math.random() * stringified.length)
+	unicodeKey = stringified.charCodeAt(randomStringPosition)
+	return(unicodeKey)
 }
 // hashing function
 /*pseudo
@@ -35,8 +38,9 @@ var getKey = function(itemToAdd){
  * return bucket value
  */
 
-var computeHash = function(key){
-  return("hello")
+var hasher = function(key, buckets){
+	hashValue = key % buckets
+	return(hashValue)
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -59,7 +63,11 @@ function hashTable(buckets) {
   this.size = function(){
 
   }
-  this.hash = computeHash
+  this.computeHash = function(itemToAdd){
+  	var key = getKey(itemToAdd)
+	var hash = hasher(key, this.buckets)
+	return(hash)
+  }
   this.match= match
   this.destroy = destroy,
   this.table = []

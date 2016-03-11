@@ -17,10 +17,10 @@ describe("hashFunction", function(){
 	it("computes the hash value based on buckets", function(){
 		var buckets = 10
 		var first = 3, second = 235, third = 0, fourth = 37	
-		expect(computeHash(first)).toBe(3)
-		expect(computeHash(second)).toBe(10)
-		expect(computeHash(third)).toBe(0)
-		expect(computeHash(fourth)).toBe(7)
+		expect(hasher(first, buckets)).toBe(3)
+		expect(hasher(second, buckets)).toBe(5)
+		expect(hasher(third, buckets)).toBe(0)
+		expect(hasher(fourth, buckets)).toBe(7)
 	   
 	})
 
