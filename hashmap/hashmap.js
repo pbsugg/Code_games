@@ -59,8 +59,8 @@ function hashTable(buckets) {
   this.size = function(){
 
   }
-  this.hash = hash,
-  this.match= match,
+  this.hash = computeHash
+  this.match= match
   this.destroy = destroy,
   this.table = []
 
