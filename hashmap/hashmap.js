@@ -15,13 +15,39 @@ Inputs (attributes):
 
  */
 
+//key-deriving function
+//pseudo:
+/* turn item into string (whatever it is)
+ * get length of string-ified item 
+ * take a random position within that string
+ * get unicode value of char at that position
+ * return key value
+ */
+
+var getKey = function(itemToAdd){
+	stringified = itemToAdd.toString()
+	randomStringPosition = Math.floor(Math.random() * stringified.length)
+	unicodeKey = stringified.charCodeAt(randomStringPosition)
+	return(unicodeKey)
+}
+// hashing function
+/*pseudo
+ * input: key value
+ * output: bucket value
+ * get key, mod by number of buckets in hash
+ * return bucket value
+ */
+
+var hasher = function(key, buckets){
+	hashValue = key % buckets
+	return(hashValue)
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
 var buckets = function(){
    return("hello")
  }
-
-var hash = function(key){
-  return("hello")
-}
 
 var match = function(key1, key2){
 
@@ -31,14 +57,18 @@ var destroy = function(key){
 
 }
 
-function hashTable() {
+function hashTable(buckets) {
 
   this.buckets = buckets,
   this.size = function(){
 
   }
-  this.hash = hash,
-  this.match= match,
+  this.computeHash = function(itemToAdd){
+  	var key = getKey(itemToAdd)
+	var hash = hasher(key, this.buckets)
+	return(hash)
+  }
+  this.match= match
   this.destroy = destroy,
   this.table = []
 
