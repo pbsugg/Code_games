@@ -15,13 +15,35 @@ Inputs (attributes):
 
  */
 
+//key-deriving function
+//pseudo:
+/* turn item into string (whatever it is)
+ * get length of string-ified item 
+ * take a random position within that string
+ * get unicode value of char at that position
+ * return key value
+ */
+
+var getKey = function(itemToAdd){
+
+}
+// hashing function
+/*pseudo
+ * input: key value
+ * output: bucket value
+ * get key, mod by number of buckets in hash
+ * return bucket value
+ */
+
+var computeHash = function(key){
+  return("hello")
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
 var buckets = function(){
    return("hello")
  }
-
-var hash = function(key){
-  return("hello")
-}
 
 var match = function(key1, key2){
 
