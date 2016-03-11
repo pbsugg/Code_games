@@ -31,7 +31,7 @@ var destroy = function(key){
 
 }
 
-function hashTable() {
+function hashTable(buckets) {
 
   this.buckets = buckets,
   this.size = function(){
