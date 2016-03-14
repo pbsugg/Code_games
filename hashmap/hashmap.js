@@ -13,7 +13,48 @@ Inputs (attributes):
 (5) "Destroy" function-- eliminate data
 (5) "Table" --the array of buckets (linked lists)
 
+*/
+
+//hashTable Object
+
+function hashTable(buckets) {
+
+  this.buckets = buckets,
+  this.table = []
+}
+
+hashTable.prototype.initTable = function(buckets){
+	for (var i = 0; i < buckets; i++){
+		this.table[i] = new linkedList()
+	}
+	return(this.table)
+  }
+hashTable.prototype.size = function(){
+    var size = 0
+    for (var listItem in this.buckets){
+   	size += listItem.size() 
+    }
+    return(size)
+}
+
+hashTable.prototype.destroy = function(itemToDestroy){
+
+}
+
+//
+// hashing function
+/*pseudo
+ * input: key value
+ * output: bucket value
+ * get key, mod by number of buckets in hash
+ * return bucket value
  */
+hashTable.prototype.hasher = function(key, buckets){
+	hashValue = key % buckets
+	return(hashValue)
+}
+
+
 
 //key-deriving function
 //pseudo:
@@ -23,48 +64,6 @@ Inputs (attributes):
  * get unicode value of char at that position
  * return key value
  */
-//
-// hashing function
-/*pseudo
- * input: key value
- * output: bucket value
- * get key, mod by number of buckets in hash
- * return bucket value
- */
-
-
-////////////////////////////////////////////////////////////////////////////////
-
-//hashTable Object
-
-function hashTable(buckets) {
-
-  this.buckets = buckets,
-  this.table = []
-  this.tableInitialized = false
-}
-
-hashTable.prototype.initTable = function(buckets){
-	for (var i = 0; i < buckets; i++){
-		this.table[i] = new linkedList()
-	}
-  }
-hashTable.prototype.size = function(){
-    var size = 0
-    for (var listItem in this.buckets){
-    
-    }
-}
-
-hashTable.prototype.destroy = function(itemToDestroy){
-
-}
-
-hashTable.prototype.hasher = function(key, buckets){
-	hashValue = key % buckets
-	return(hashValue)
-}
-
 hashTable.prototype.getKey = function(itemToAdd){
 	stringified = itemToAdd.toString()
 	randomStringPosition = Math.floor(Math.random() * stringified.length)
