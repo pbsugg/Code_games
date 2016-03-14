@@ -17,6 +17,9 @@ function linkedList() {
 
   this.head = null 
   this.traverseToEnd = function(){
+    if (this.head == null){
+	return null
+    }
     current_node = this.head;
     while (current_node.next){
       current_node = current_node.next;
