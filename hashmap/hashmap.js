@@ -21,19 +21,20 @@ function hashTable(buckets) {
 
   this.buckets = buckets,
   this.table = []
-  this.tableInitialized = false
 }
 
 hashTable.prototype.initTable = function(buckets){
 	for (var i = 0; i < buckets; i++){
 		this.table[i] = new linkedList()
 	}
+	return(this.table)
   }
 hashTable.prototype.size = function(){
     var size = 0
     for (var listItem in this.buckets){
-    
+   	size += listItem.size() 
     }
+    return(size)
 }
 
 hashTable.prototype.destroy = function(itemToDestroy){
@@ -54,7 +55,6 @@ hashTable.prototype.hasher = function(key, buckets){
 }
 
 
- */
 
 //key-deriving function
 //pseudo:

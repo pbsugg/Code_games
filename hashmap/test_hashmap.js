@@ -1,7 +1,6 @@
 describe('key-deriving function', function(){
     	beforeEach(function(){
-		this.testHashTable = new hashTable(10)	
-	})
+		this.testHashTable = new hashTable(10)	})
 	it("returns a key for a given string value", function(){
 			
 		var item1 = [1,2,3,4]	

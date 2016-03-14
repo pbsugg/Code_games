@@ -68,6 +68,21 @@ function linkedList() {
 	}
 	
   }
-
+  
+  this.size = function(){
+	var size = 0  
+	if (this.head){
+	    size += 1
+	}
+	else{
+	    return 0
+	}
+	var currentNode = this.head
+ 	while(currentNode.next) {
+	    size += 1
+	    currentNode = currentNode.next
+	}
+	return(size)
+  }
 
 }

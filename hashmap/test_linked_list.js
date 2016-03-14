@@ -84,6 +84,18 @@ describe("linked list", function() {
 	expect(this.testLL.traverseToEnd()).toBe(this.node3)
   })
 
+  it("can measure correct size on a list of 0, 1 or 1+ size", function(){
+	  
+        
+	expect(this.testLL.size()).toBe(1)
+	this.testLL.addNode(this.node2)
+	expect(this.testLL.size()).toBe(2)
+	this.testLL.addNode(this.node3)
+	expect(this.testLL.size()).toBe(3)
+	this.testLL.head = null
+	expect(this.testLL.size()).toBe(0)
+  })
+
 })
 
 
