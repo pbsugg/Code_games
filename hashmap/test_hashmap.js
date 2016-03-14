@@ -38,9 +38,6 @@ describe("hashTable", function(){
 	beforeEach(function(){
 	    self.buckets = 10
 	    self.testHashTable = new hashTable(buckets)
-
-	
-	
 	})
 
 	it("initializes a new hashTable with required buckets", function(){
@@ -52,4 +49,40 @@ describe("hashTable", function(){
 		expect(self.testHashTable.match(33, 33)).toBe(true)
 	})
 
+	xit("can report its own size", function(){
+	
+	
+	})
+
+	xit("can get rid of  a value", function(){
+	
+	
+	})
+
+})
+
+
+describe("hashTableInterface", function(){
+
+	beforeEach(function(){
+	    self.buckets = 10
+	    self.testHashTable = new hashTable(buckets)
+	})
+	
+	it("can insert a new unique value into the table", function() {
+
+	})
+
+	it("doesn't insert duplicates--values are unique", function() {
+	
+	})
+
+	it("has a lookup function that returns true if the element is found",function(){
+	
+	})
+
+	it("returns false if lookup does not find object", function(){
+	
+	
+	})
 })

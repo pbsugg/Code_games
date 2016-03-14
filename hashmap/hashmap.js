@@ -35,19 +35,28 @@ Inputs (attributes):
 
 ////////////////////////////////////////////////////////////////////////////////
 
-
+//hashTable Object
 
 function hashTable(buckets) {
 
   this.buckets = buckets,
-  this.size = function(){
-  }
-  this.destroy = destroy,
   this.table = []
-
+  this.tableInitialized = false
 }
 
-var destroy = function(key){
+hashTable.prototype.initTable = function(buckets){
+	for (var i = 0; i < buckets; i++){
+		this.table[i] = new linkedList()
+	}
+  }
+hashTable.prototype.size = function(){
+    var size = 0
+    for (var listItem in this.buckets){
+    
+    }
+}
+
+hashTable.prototype.destroy = function(itemToDestroy){
 
 }
 
@@ -77,3 +86,21 @@ hashTable.prototype.match = function(key1, key2){
 	    return false
 	}
 }
+
+//public interface for hashTable
+
+function hTInterface(hashTable){
+    this.size = hashTable.size()
+}
+
+//go through each bucket in array
+// search the linked list, return any matches
+
+hTInterface.prototype.lookUp = function(hashTable, valueToLookup){
+
+}
+
+hTInterface.prototype.insert = function(hashTable, dataToInsert){
+
+}
+

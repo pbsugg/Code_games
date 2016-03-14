@@ -13,9 +13,9 @@ function listNode(value) {
 
 }
 
-function linkedList(head) {
+function linkedList() {
 
-  this.head = head;
+  this.head = null 
   this.traverseToEnd = function(){
     current_node = this.head;
     while (current_node.next){

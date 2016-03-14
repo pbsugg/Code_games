@@ -4,11 +4,17 @@ describe("linked list", function() {
 
   beforeEach(function(){
       
-	var node1 = new listNode(1)
- 	testLL = new linkedList(node1)
+ 	this.testLL = new linkedList()
+        var node1 = new listNode(1)
+      	var node2 = new listNode(2)
+	var node3 = new listNode(3)
+
   })
 
   it("initializes the proper nodes and linked lists", function() {
+
+	var node1 = new listNode(1)
+	this.testLL.head = node1		
 	var head = testLL.head
 	expect(testLL.head).toBe(head);
 	expect(head.value).toBe(1)
