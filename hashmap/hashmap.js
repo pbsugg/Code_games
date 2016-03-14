@@ -89,7 +89,9 @@ hashTable.prototype.match = function(key1, key2){
 //public interface for hashTable
 
 function hTInterface(hashTable){
-    this.size = hashTable.size()
+    this.size = function() {
+	return hashTable.size()
+    }
 }
 
 //go through each bucket in array
