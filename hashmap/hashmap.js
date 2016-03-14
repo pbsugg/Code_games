@@ -13,27 +13,7 @@ Inputs (attributes):
 (5) "Destroy" function-- eliminate data
 (5) "Table" --the array of buckets (linked lists)
 
- */
-
-//key-deriving function
-//pseudo:
-/* turn item into string (whatever it is)
- * get length of string-ified item 
- * take a random position within that string
- * get unicode value of char at that position
- * return key value
- */
-//
-// hashing function
-/*pseudo
- * input: key value
- * output: bucket value
- * get key, mod by number of buckets in hash
- * return bucket value
- */
-
-
-////////////////////////////////////////////////////////////////////////////////
+*/
 
 //hashTable Object
 
@@ -60,11 +40,30 @@ hashTable.prototype.destroy = function(itemToDestroy){
 
 }
 
+//
+// hashing function
+/*pseudo
+ * input: key value
+ * output: bucket value
+ * get key, mod by number of buckets in hash
+ * return bucket value
+ */
 hashTable.prototype.hasher = function(key, buckets){
 	hashValue = key % buckets
 	return(hashValue)
 }
 
+
+ */
+
+//key-deriving function
+//pseudo:
+/* turn item into string (whatever it is)
+ * get length of string-ified item 
+ * take a random position within that string
+ * get unicode value of char at that position
+ * return key value
+ */
 hashTable.prototype.getKey = function(itemToAdd){
 	stringified = itemToAdd.toString()
 	randomStringPosition = Math.floor(Math.random() * stringified.length)
