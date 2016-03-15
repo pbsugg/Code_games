@@ -35,28 +35,41 @@ describe("hashFunction", function(){
 
 describe("hashTable", function(){
 	beforeEach(function(){
-	    self.buckets = 10
-	    self.testHashTable = new hashTable(buckets)
+	    this.buckets = 10
+	    this.testHashTable = new hashTable(this.buckets)
+	    this.testHashTable.initTable(this.buckets)
+	    this.valuesToAdd = ["bill", "bob", "steve", "jim", 1, 2, 5]
+
+	    //create the interface
+	    this.hTInterface = hTInterface(this.testHashTable)
 	})
 
 	it("initializes a new hashTable with required buckets", function(){
-		expect(self.testHashTable.buckets).toBe(10)
+		expect(this.testHashTable.buckets).toBe(10)
 	})
 
-	it("can perform a lookup if a current value is in the hash", function(){
-		expect(self.testHashTable.match(33, 45)).toBe(false)
-		expect(self.testHashTable.match(33, 33)).toBe(true)
+	it("can search for matching keys in the hash", function(){
+		expect(this.testHashTable.match(33, 45)).toBe(false)
+		expect(this.testHashTable.match(33, 33)).toBe(true)
 	})
 
-	xit("can report its own size", function(){
+	it("can report its own size", function(){
+
+		expect(this.testHashTable.size()).toBe(0)
+		var firstLL = this.testHashTable.table[0]
+		firstLL.addNode(this.valuesToAdd[0])
+		expect(this.testHashTable.size()).toBe(1)
+		firstLL.addNode(this.valuesToAdd[1])
+		firstLL.addNode(this.valuesToAdd[2])
+	})
+
+	xit("can get rid of a value", function(){
 	
+		expect(this.testHashTable.size()).toBe(0)
 	
 	})
 
-	xit("can get rid of  a value", function(){
-	
-	
-	})
+
 
 })
 
@@ -64,24 +77,45 @@ describe("hashTable", function(){
 describe("hashTableInterface", function(){
 
 	beforeEach(function(){
-	    self.buckets = 10
-	    self.testHashTable = new hashTable(buckets)
+	    this.buckets = 10
+	    this.testHashTable = new hashTable(this.buckets)
+	    this.testHashTable.initTable(this.buckets)
+	    this.valuesToAdd = ["bill", "bob", "steve", "jim", 1, 2, 5]
+
+	    //create the interface
+	    this.hTInterface = new hTInterface(this.testHashTable)
 	})
 	
-	it("can insert a new unique value into the table", function() {
 
-	})
-
-	it("doesn't insert duplicates--values are unique", function() {
+	it("returns false if lookup does not find object", function(){
+	
+	    expect(this.hTInterface.lookUp(this.testHashTable,"DOG")).toBe(false)
 	
 	})
 
 	it("has a lookup function that returns true if the element is found",function(){
 	
+	    this.hTInterface.insert(this.testHashTable, this.valuesToAdd[0])
+	    expect(this.testHashTable.size()).toBe(1)
+            expect(this.hTInterface.lookUp(this.testHashTable, this.valuesToAdd[0])).toBe(true)
 	})
 
-	it("returns false if lookup does not find object", function(){
-	
+	it("can insert a new unique value into the table", function() {
+
+	    expect(this.hTInterface.size(this.testHashTable)).toBe(0)
+	    this.hTInterface.insert(this.testHashTable, this.valuesToAdd[0])
+	    expect(this.hTInterface.size(this.testHashTable)).toBe(1)
+	    expect(this.hTInterface.lookUp(this.testHashTable, this.valuesToAdd[0])).toBe(true)
+
+	})
+
+	it("doesn't insert duplicates--values are unique", function() {
+
+	    expect(this.hTInterface.size(this.testHashTable)).toBe(0)
+	    this.hTInterface.insert(this.testHashTable, this.valuesToAdd[0])
+	    expect(this.hTInterface.size(this.testHashTable)).toBe(1)
+	    this.hTInterface.insert(this.testHashTable, this.valuesToAdd[0])
+	    expect(this.testHashTable.size(this.testHashTable)).toBe(1)
 	
 	})
 })
