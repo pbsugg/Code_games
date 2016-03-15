@@ -39,10 +39,6 @@ hashTable.prototype.size = function(){
     return(size)
 }
 
-hashTable.prototype.destroy = function(itemToDestroy){
-
-}
-
 //
 // hashing function
 /*pseudo
@@ -78,13 +74,12 @@ hashTable.prototype.computeHash = function(itemToAdd){
 	return(hash)
   }
 
-hashTable.prototype.match = function(key1, key2){
-	if(key1 == key2){
-	    return true
-	}
-	else{
-	    return false
-	}
+//find linkedList bucket that houses a potential value
+hashTable.prototype.match = function(valueToSearch){
+
+	var insertBucket = this.computeHash(valueToSearch)
+	var potentialList = this.table[insertBucket]
+	return(potentialList)
 }
 
 //public interface for hashTable
@@ -101,11 +96,11 @@ function hTInterface(hashTable){
 hTInterface.prototype.lookUp = function(hashTable, valueToLookup){
     //Find bucket where this hashed value might reside, so we know where to
     //look!  Calling key and hash functions from hashTable
-    	var bucketToSearch = hashTable.computeHash(valueToLookup)
-	var listToSearch = hashTable.table[bucketToSearch]
+        var listToSearch = hashTable.match(valueToLookup)
 	if (listToSearch.getNode(valueToLookup)){
 	    return(true)
-	}else{
+	}
+	else{
 	    return(false)
 	}
 }
@@ -117,14 +112,22 @@ hTInterface.prototype.insert = function(hashTable, dataToInsert){
 	
     if (this.lookUp(hashTable, dataToInsert)){
    	return(null) 
-    }else{
-	//if it's not in there
-	//compute the hash position
-	//insert it into the next position in the linked list
-	var insertBucket = hashTable.computeHash(dataToInsert)
-	var listToInsert = hashTable.table[insertBucket]
+    }
+    else{
+	var listToInsert = hashTable.match(dataToInsert)
 	listToInsert.addNode(dataToInsert)
 	return(dataToInsert)
     }
 }
 
+
+hTInterface.prototype.remove = function(hashTable, valueToRemove){
+
+    if (this.lookUp(hashTable, valueToRemove)){
+
+	var listWithValue = hashTable.match(valueToRemove)
+	listWithValue.deleteNode(valueToRemove)	
+	
+    }
+
+}

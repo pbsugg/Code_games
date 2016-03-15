@@ -48,11 +48,6 @@ describe("hashTable", function(){
 		expect(this.testHashTable.buckets).toBe(10)
 	})
 
-	it("can search for matching keys in the hash", function(){
-		expect(this.testHashTable.match(33, 45)).toBe(false)
-		expect(this.testHashTable.match(33, 33)).toBe(true)
-	})
-
 	it("can report its own size", function(){
 
 		expect(this.testHashTable.size()).toBe(0)
@@ -61,12 +56,6 @@ describe("hashTable", function(){
 		expect(this.testHashTable.size()).toBe(1)
 		firstLL.addNode(this.valuesToAdd[1])
 		firstLL.addNode(this.valuesToAdd[2])
-	})
-
-	xit("can get rid of a value", function(){
-	
-		expect(this.testHashTable.size()).toBe(0)
-	
 	})
 
 
@@ -117,5 +106,21 @@ describe("hashTableInterface", function(){
 	    this.hTInterface.insert(this.testHashTable, this.valuesToAdd[0])
 	    expect(this.testHashTable.size(this.testHashTable)).toBe(1)
 	
+	})
+
+	it("can remove values from the hash", function(){
+	
+	    	for(var i = 0; i < this.valuesToAdd.length; i++){
+		    	this.hTInterface.insert(this.testHashTable, this.valuesToAdd[i])
+		}
+		expect(this.hTInterface.size(this.testHashTable))
+		expect(this.testHashTable.size()).toBe(this.valuesToAdd.length)
+		//remove the values one by one and check on it
+	    	for(var i = 0; i < this.valuesToAdd.length; i++){
+			expect(this.testHashTable.size()).toBe((7 - i))
+			this.hTInterface.remove(this.testHashTable, this.valuesToAdd[i])
+	    		expect(this.hTInterface.lookUp(this.testHashTable, 
+			this.valuesToAdd[0])).toBe(false)
+		}
 	})
 })
