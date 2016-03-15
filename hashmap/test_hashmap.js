@@ -37,6 +37,7 @@ describe("hashTable", function(){
 	beforeEach(function(){
 	    this.buckets = 10
 	    this.testHashTable = new hashTable(this.buckets)
+	    this.testHashTable.initTable(this.buckets)
 	    this.valuesToAdd = ["bill", "bob", "steve", "jim", 1, 2, 5]
 
 	    //create the interface
@@ -52,9 +53,15 @@ describe("hashTable", function(){
 		expect(this.testHashTable.match(33, 33)).toBe(true)
 	})
 
-	xit("can report its own size", function(){
+	it("can report its own size", function(){
 
 		expect(this.testHashTable.size()).toBe(0)
+		var firstLL = this.testHashTable.table[0]
+		firstLL.addNode(this.valuesToAdd[0])
+		console.log(this.testHashTable.table[0].size())
+		expect(this.testHashTable.size()).toBe(1)
+		firstLL.addNode(this.valuesToAdd[1])
+		firstLL.addNode(this.valuesToAdd[2])
 	})
 
 	xit("can get rid of a value", function(){
@@ -62,6 +69,8 @@ describe("hashTable", function(){
 		expect(this.testHashTable.size()).toBe(0)
 	
 	})
+
+
 
 })
 
@@ -71,6 +80,7 @@ describe("hashTableInterface", function(){
 	beforeEach(function(){
 	    this.buckets = 10
 	    this.testHashTable = new hashTable(this.buckets)
+	    this.testHashTable.initTable(this.buckets)
 	    this.valuesToAdd = ["bill", "bob", "steve", "jim", 1, 2, 5]
 
 	    //create the interface

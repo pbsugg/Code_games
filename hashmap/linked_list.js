@@ -27,6 +27,9 @@ function linkedList() {
     return(current_node);
   }
   this.addNode = function(nodeToAdd){
+      if(this.head == null){
+	  this.head = nodeToAdd
+      }
       listEnd = this.traverseToEnd();
       listEnd.next = nodeToAdd;
       return(nodeToAdd);
