@@ -48,11 +48,6 @@ describe("hashTable", function(){
 		expect(this.testHashTable.buckets).toBe(10)
 	})
 
-	it("can search for matching keys in the hash", function(){
-		expect(this.testHashTable.match(33, 45)).toBe(false)
-		expect(this.testHashTable.match(33, 33)).toBe(true)
-	})
-
 	it("can report its own size", function(){
 
 		expect(this.testHashTable.size()).toBe(0)
