@@ -114,9 +114,6 @@ hTInterface.prototype.insert = function(hashTable, dataToInsert){
    	return(null) 
     }
     else{
-	//if it's not in there
-	//compute the hash position
-	//insert it into the next position in the linked list
 	var listToInsert = hashTable.match(dataToInsert)
 	listToInsert.addNode(dataToInsert)
 	return(dataToInsert)
@@ -124,7 +121,13 @@ hTInterface.prototype.insert = function(hashTable, dataToInsert){
 }
 
 
-hTInterface.prototype.remove = function(valueToRemove){
+hTInterface.prototype.remove = function(hashTable, valueToRemove){
 
+    if (this.lookUp(hashTable, valueToRemove)){
+
+	var listWithValue = hashTable.match(valueToRemove)
+	listWithValue.deleteNode(valueToRemove)	
+	
+    }
 
 }
