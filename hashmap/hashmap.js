@@ -62,14 +62,13 @@ hashTable.prototype.hasher = function(key, buckets){
 //pseudo:
 /* turn item into string (whatever it is)
  * get length of string-ified item 
- * take a random position within that string
+ * take the [0] position within that string
  * get unicode value of char at that position
  * return key value
  */
 hashTable.prototype.getKey = function(itemToAdd){
 	var stringified = itemToAdd.toString()
-	var randomStringPosition = Math.floor(Math.random() * stringified.length)
-	var unicodeKey = stringified.charCodeAt(randomStringPosition)
+	var unicodeKey = stringified.charCodeAt(0)
 	return(unicodeKey)
 }
 
@@ -104,10 +103,7 @@ hTInterface.prototype.lookUp = function(hashTable, valueToLookup){
     //look!  Calling key and hash functions from hashTable
     	var bucketToSearch = hashTable.computeHash(valueToLookup)
 	var listToSearch = hashTable.table[bucketToSearch]
-	console.log(bucketToSearch)
-	console.log(listToSearch)
 	if (listToSearch.getNode(valueToLookup)){
-	    console.log("here!")
 	    return(true)
 	}else{
 	    return(false)

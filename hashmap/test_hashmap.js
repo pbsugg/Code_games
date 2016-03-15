@@ -58,7 +58,6 @@ describe("hashTable", function(){
 		expect(this.testHashTable.size()).toBe(0)
 		var firstLL = this.testHashTable.table[0]
 		firstLL.addNode(this.valuesToAdd[0])
-		console.log(this.testHashTable.table[0].size())
 		expect(this.testHashTable.size()).toBe(1)
 		firstLL.addNode(this.valuesToAdd[1])
 		firstLL.addNode(this.valuesToAdd[2])
@@ -97,6 +96,7 @@ describe("hashTableInterface", function(){
 	it("has a lookup function that returns true if the element is found",function(){
 	
 	    this.hTInterface.insert(this.testHashTable, this.valuesToAdd[0])
+	    expect(this.testHashTable.size()).toBe(1)
             expect(this.hTInterface.lookUp(this.testHashTable, this.valuesToAdd[0])).toBe(true)
 	})
 

@@ -27,19 +27,29 @@ function linkedList() {
     return(current_node);
   }
   this.addNode = function(nodeToAdd){
+      // deal w/ funky incoming vales re: hash
+      // should probably have a more standard answer re: this question
+      // what to do if incoming value not a node?
+      if (!(nodeToAdd instanceof listNode)){
+	  nodeToAdd = new listNode(nodeToAdd)
+      }
       if(this.head == null){
 	  this.head = nodeToAdd
-      }
+      }else{
       listEnd = this.traverseToEnd();
       listEnd.next = nodeToAdd;
       return(nodeToAdd);
+      } 
   }
   this.getNode = function(value){
     var currentNode = this.head;
-    while(currentNode && currentNode.value != value){
+    while(currentNode){
+	if (currentNode.value == value)	{
+  		 return(currentNode)
+	}
       currentNode = currentNode.next
     }
-    return(currentNode)
+    return(null)
     // returns null if not in linkedList
   }
   
