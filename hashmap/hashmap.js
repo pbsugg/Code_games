@@ -6,11 +6,9 @@ Hashtable Object (basically an array of linked lists)
 Initialize:
 
 Inputs (attributes):
-(1) Integer: buckets
-(2) "Buckets" (number of spaces in table)
+(1) "Buckets" (number of spaces in table)
+(2) Key-deriving function
 (3) Hashing function (for creating the hash address)
-(4) "Match"--for determining whether two keys match(input: two keys) (lookup function)
-(5) "Destroy" function-- eliminate data
 (5) "Table" --the array of buckets (linked lists)
 
 */
