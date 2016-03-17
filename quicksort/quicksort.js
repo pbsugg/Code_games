@@ -57,20 +57,45 @@ var comparisonOperator = function(value1, value2){
 var insertionSort = function(arrayToSort, comparisonOperator){
 
 //Building a quick insertion sort algorithm to help derive median
+// worse-case O complexity n^2
+   
+    for(var divider = 1; divider < arrayToSort.length; j++){
+	
+	var nextToSort = divider - 1
 
-
-
+    }
 }
-//need this for my median of three method
-var medianOfThree = function(arrayOfNumbers){
-    
-	//select three random values
-	var random_values = []
-	for (var i = 0; i < 3; i++){
-	    	var randomFromArray = Math.floor(Math.random() * (arrayOfNumbers.length))
-		random_values[i] = arrayOfNumbers[randomFromArray]
+
+//insert a new element to array in given position, shift others over
+var insertToArray = function(inputArray, elementToInsert, positionToInsert){
+   
+	var newArray = []
+	var inserted = false
+	for(var i = 0; i < inputArray.length + 1; i++){
+	    if(i < positionToInsert ){
+		newArray[i] = inputArray[i]
+	    }
+	    else if(i == positionToInsert){
+		newArray[i] = elementToInsert
+	    }
+	    else{
+	   	newArray[i] = inputArray[i - 1] 
+	    }
 	}
+	return newArray
 
-	return (pivot)
-	   
 }
+
+////need this for my median of three method
+//var medianOfThree = function(arrayOfNumbers){
+    
+	////select three random values
+	//var random_values = []
+	//for (var i = 0; i < 3; i++){
+		    //var randomFromArray = Math.floor(Math.random() * (arrayOfNumbers.length))
+		//random_values[i] = arrayOfNumbers[randomFromArray]
+	//}
+
+	//return (pivot)
+	   
+//}
