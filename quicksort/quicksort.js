@@ -54,48 +54,37 @@ var comparisonOperator = function(value1, value2){
 
 }
 
-var insertionSort = function(arrayToSort, comparisonOperator){
+var insertionSort = function(arrayToSort){
 
 //Building a quick insertion sort algorithm to help derive median
 // worse-case O complexity n^2
-   
-    for(var divider = 1; divider < arrayToSort.length; j++){
-	
-	var nextToSort = divider - 1
+  	 
+    for(var current = 1; current < arrayToSort.length; current++){
 
-    }
-}
-
-//insert a new element to array in given position, shift others over
-var insertToArray = function(inputArray, elementToInsert, positionToInsert){
-   
-	var newArray = []
-	var inserted = false
-	for(var i = 0; i < inputArray.length + 1; i++){
-	    if(i < positionToInsert ){
-		newArray[i] = inputArray[i]
-	    }
-	    else if(i == positionToInsert){
-		newArray[i] = elementToInsert
-	    }
-	    else{
-	   	newArray[i] = inputArray[i - 1] 
-	    }
+	var nextToSort = current 
+	    //keep shifting elements one over to the right until you find
+	    // correct sorted position
+	    // comparing current with the element to the left of current
+	while( current > 0 && (arrayToSort[current] < arrayToSort[current - 1])){
+	    	var holder = arrayToSort[current] 
+		arrayToSort[current] = arrayToSort[current - 1]	
+		arrayToSort[current - 1] = holder
+		current -= 1 
 	}
-	return newArray
-
+    }
+    return arrayToSort
 }
 
-////need this for my median of three method
-//var medianOfThree = function(arrayOfNumbers){
-    
-	////select three random values
-	//var random_values = []
-	//for (var i = 0; i < 3; i++){
-		    //var randomFromArray = Math.floor(Math.random() * (arrayOfNumbers.length))
-		//random_values[i] = arrayOfNumbers[randomFromArray]
-	//}
-
-	//return (pivot)
+//need this for my median of three method
+var medianOfThree = function(arrayOfNumbers){
+	//select three random values
+	var random_values = []
+	for (var i = 0; i < 3; i++){
+		var randomFromArray = Math.floor(Math.random() * (arrayOfNumbers.length))
+		random_values[i] = arrayOfNumbers[randomFromArray]
+	}
+	var sorted  = insertionSort(random_values)
+	var pivot = sorted[1]
+	return(pivot)
 	   
-//}
+}
