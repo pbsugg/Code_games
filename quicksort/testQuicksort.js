@@ -23,10 +23,9 @@ describe("quicksort an array of numbers", function(){
 	it("can deal with a very large number of values", function(){
 		var test_array = []
 	    	for(var i = 0; i <= 10000; i++){
-		// Generate value between 1 and 1000: 10,000 times
-	   		test_array[i] = Math.floor(Math.random * 1000)
+		// Generate value between 0 and 1000: 10,000 times
+	   		test_array[i] = Math.floor(Math.random() * 1000)
 	    	}
-
 		expect(quicksort(test_array)).toEqual(test_array.sort(this.comparison_basis))
 
 	})
