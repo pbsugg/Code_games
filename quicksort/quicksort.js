@@ -3,23 +3,18 @@
  * Inputs: 
  * 1) Array to sort
  * 2) Start, End positions in array 
- * 3) Callback comparison function
+ * 3) comparison function 
  * 
  * Two parts to algorithm:
  *
  * 1) Recursively divide up the array until you have only single elements
- * 	a) pick an element as the pivot (median of three)
- * 		pick three random values, median is pivot
- * 	b) all elements on one side should be greater than the pivot
- * 	c) all elements on the other side should be less than pivot
- * 	d) partion at the pivot point (pivot goes below)
- * 	e) recursively apply pivot operation to both sides until only single
- * 	elements
- * 	f) combine values
- * 2) Apply your sort method (median of three)
- * 	Sort method just a simple "greater than" comparison"
- *
- * Sort method takes two values, compares them
+ * 	a) pick an element as the pivot (median of three rule)
+ * 		median of three rule = pick three random values, median is pivot
+ * 	b) all elements on left  side should be greater than the pivot
+ * 	c) all elements on the right side should be less than pivot
+ * 	d) partion array at the pivot point 
+ * 	e) recursively apply this operation to both sides until only single
+ * 	elements are left
  *
  */
 
@@ -38,7 +33,9 @@ var quickSort = function(arrayToSort, startPoint, endPoint, comparisonOperator){
 
 }
 
-//partition into two sorted arrays
+//partition into two arrays
+//everything in segment to left of pivot is < pivot value and vice-versa for
+//right side
 var partition = function(arrayToSort, startPoint, endPoint, comparisonOperator){
 
     var pivot = medianOfThree(arrayToSort)
@@ -95,13 +92,19 @@ var comparisonOperator = function(value1, value2){
 
 var insertionSort = function(arrayToSort){
 
-//Building a quick insertion sort algorithm for the hell of it and to help derive median
+//Building a quick insertion sort algorithm for the hell of it and to help derive median value in
+// array
 // worse-case O complexity n^2
-  	 
-	    //keep shifting elements one over to the right until you find
-	    // this current is not less than the value to left of current 
-	    // This has nice side effect of deleting current's original
-	    // position, don't have to worry about indexing out of your array
+  
+//start with variable, current, equal to position 1 in array (position 0 is
+//triviall sorted)    
+// Keep comparing current to value to left (current - 1) WHILE current is > 0
+// If current is less than current -1, swap the values
+// continue swapping until you find a value for which current > (current - 1)
+// (or at end)
+// This has nice side effect of deleting current's original
+// // position, so the shifting takes place in the original array-- don't have
+// to create new one.  Swapping action means you  don't have to worry about indexing out of your array
 
     for(var current = 1; current < arrayToSort.length; current++){
 
