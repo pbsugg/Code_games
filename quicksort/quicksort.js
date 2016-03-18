@@ -27,11 +27,12 @@
 var quickSort = function(arrayToSort, startPoint, endPoint, comparisonOperator){
 
     if(startPoint < endPoint){
-    
+
     var pivot = partition(arrayToSort, startPoint, endPoint, comparisonOperator)
+	console.log(pivot)
     //sort right and left side partitions recursively
-    quickSort(arrayToSort, startPoint, pivot - 1, comparisonOperator)
-    quickSort(arrayToSort, pivot + 1, endPoint, comparisonOperator)
+    return quickSort(arrayToSort, startPoint, pivot - 1, comparisonOperator)
+    return quickSort(arrayToSort, pivot + 1, endPoint, comparisonOperator)
    
     }
 
@@ -44,7 +45,6 @@ var partition = function(arrayToSort, startPoint, endPoint, comparisonOperator){
 
    --startPoint;
    ++endPoint;
-   var pivot = medianOfThree(arrayToSort);
 
     do{
 	//checking to see if values are on right side of their pivot
@@ -52,12 +52,12 @@ var partition = function(arrayToSort, startPoint, endPoint, comparisonOperator){
 		
 		--endPoint;
 
-	   }while(comparisonOperator(endPoint, pivot) > 0)
+	   }while(comparisonOperator(arrayToSort[endPoint], pivot) >= 0)
 
 	do{
 	    	++startPoint;
 	
-	   }while(comparisonOperator(startPoint, pivot) < 0)
+	   }while(comparisonOperator(arrayToSort[startPoint], pivot) <= 0)
 
 	if(startPoint >= endPoint){
 
@@ -72,7 +72,7 @@ var partition = function(arrayToSort, startPoint, endPoint, comparisonOperator){
    //not expecting the conditional to break out--waiting for "break" to trigger
     } while(1)
 
-    return pivot;
+    return endPoint;
 
 }
 
