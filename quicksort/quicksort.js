@@ -19,15 +19,15 @@
  */
 
 
-var quickSort = function(arrayToSort, startPoint, endPoint, comparisonOperator){
+var quickSort = function(arrayToSort, lowerBound, upperBound, comparisonOperator){
 
-    if(startPoint < endPoint){
+    if(lowerBound < upperBound){
 
-    var pivot = partition(arrayToSort, startPoint, endPoint, comparisonOperator)
+    var pivot = partition(arrayToSort, lowerBound, upperBound, comparisonOperator)
 	console.log(pivot)
     //sort right and left side partitions recursively
-    return quickSort(arrayToSort, startPoint, pivot - 1, comparisonOperator)
-    return quickSort(arrayToSort, pivot + 1, endPoint, comparisonOperator)
+    return quickSort(arrayToSort, lowerBound, pivot - 1, comparisonOperator)
+    return quickSort(arrayToSort, pivot + 1, upperBound, comparisonOperator)
    
     }
 
@@ -36,40 +36,40 @@ var quickSort = function(arrayToSort, startPoint, endPoint, comparisonOperator){
 //partition into two arrays
 //everything in segment to left of pivot is < pivot value and vice-versa for
 //right side
-var partition = function(arrayToSort, startPoint, endPoint, comparisonOperator){
+var partition = function(arrayToSort, lowerBound, upperBound, comparisonOperator){
 
     var pivot = medianOfThree(arrayToSort)
 
-   --startPoint;
-   ++endPoint;
+   --lowerBound;
+   ++upperBound;
 
     do{
 	//checking to see if values are on right side of their pivot
 	do{
 		
-		--endPoint;
+		--upperBound;
 
-	   }while(comparisonOperator(arrayToSort[endPoint], pivot) >= 0)
+	   }while(comparisonOperator(arrayToSort[upperBound], pivot) > 0)
 
 	do{
-	    	++startPoint;
+	    	++lowerBound;
 	
-	   }while(comparisonOperator(arrayToSort[startPoint], pivot) <= 0)
+	   }while(comparisonOperator(arrayToSort[lowerBound], pivot) < 0)
 
-	if(startPoint >= endPoint){
+	if(lowerBound >= upperBound){
 
 		break	
 	}
 	else{
-	    // switch the values whenver one is on wrong side of pivot
-	    var holder = arrayToSort[startPoint]
-	    arrayToSort[startPoint] = arrayToSort[endPoint]
-	    arrayToSort[endPoint] = holder
+	    // switch the values whenver you generate two on wrong side of pivot
+	    var holder = arrayToSort[lowerBound]
+	    arrayToSort[lowerBound] = arrayToSort[upperBound]
+	    arrayToSort[upperBound] = holder
 	}
    //not expecting the conditional to break out--waiting for "break" to trigger
     } while(1)
 
-    return endPoint;
+    return upperBound;
 
 }
 
