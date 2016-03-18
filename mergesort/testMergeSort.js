@@ -6,7 +6,6 @@ describe("mergeSort an array of numbers", function(){
 			return a - b	
 		}	
 	})
-bob = function that is the best(hello)		
 	//have to structure tests where I duplicate array and then compare and
 	//(destructively modified) original because mergeSort does not return
 	//array

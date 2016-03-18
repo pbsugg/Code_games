@@ -22,7 +22,7 @@ var mergeSort = function(arrayToSort, lowerBound, upperBound, comparisonOperator
 
 			return -1
 		}
-		if(mergeSort(arrayToSort, lowerBound, upperBound, comparisonOperator) < 0){
+		if(mergeSort(arrayToSort, (midPoint + 1), upperBound, comparisonOperator) < 0){
 
 			return -1
 		}
@@ -32,22 +32,62 @@ var mergeSort = function(arrayToSort, lowerBound, upperBound, comparisonOperator
 		}
 	}
 
-})
+}
 
 var merge = function(arrayToSort, lowerBound, midPoint, upperBound, comparisonOperator){
-
-	var lowerBoundPosition = lowerBound;
-	var midPointPosition = midPoint + 1;
-	var mPos = 0;
-	while(lowerBoundPosition <= midPoint ||  midPointPosition <= upperBound){
 	
-		if(lowerPosition <= midPoint){
-			while(midPointPosition <= upperBound){
-
+	var resultArray = []
+	var leftArrayPosition = lowerBound;
+	var rightArrayPosition = midPoint + 1;
+	// results array starts at 0 b/c no values written yet
+	var resultArrayPosition = 0;
+	// loop runs while either left or right element  has elements to merge
+	while(leftArrayPosition <= midPoint ||  rightArrayPosition <= upperBound){
+	
+		//left array is exhausted, but still elements in right
+		//see note below on right array
+		if(leftArrayPosition > midPoint){
+			while(rightArrayPosition <= upperBound){
+				resultArray[resultArrayPosition] = arrayToSort[rightArrayPosition]	
+				++rightArrayPosition;
+				++resultArrayPosition;
 			}
+			//continue b/c only one or other half of loop will have values left,
+			//not both
+			continue;
+		}
+
+		//right array is exhausted, but still elements in left
+		// right elements are already sorted, so we copy them over one after
+		// another 
+		else if(rightArrayPosition > upperBound){
+			while(leftArrayPosition <= midpoint){
+				resultArray[resultArrayPosition] = arrayToSort[leftArrayPosition] 
+				++leftArrayPosition;
+				++resultArrayPosition;
+			}
+			continue;
+		}
+	
+		//if element in right array is greater, insert left array element to
+		//result first
+		if ((comparisonOperator(arrayToSort[leftArrayPosition],
+		arrayToSort[rightArrayPosition]) < 0)){
+		
+			resultArray[resultArrayPosition] = arrayToSort[leftArrayPosition]
+			++leftArrayPosition;
+			++resultArrayPosition;
+		}
+		//and vice-versa
+		else{
+			
+			resultArray[resultArrayPosition] = arrayToSort[rightArrayPosition]
+			++rightArrayPosition;
+			++resultArrayPosition;
 		}
 	}
-})
+	return resultArray
+}
 
 var comparisonOperator = function(value1, value2){
     
