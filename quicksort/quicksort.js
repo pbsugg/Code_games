@@ -61,7 +61,7 @@ var partition = function(arrayToSort, startPoint, endPoint, comparisonOperator){
 		break	
 	}
 	else{
-	    // switch the values whenver one is on wrong side of pivot
+	    // switch the values whenver you generate two on wrong side of pivot
 	    var holder = arrayToSort[startPoint]
 	    arrayToSort[startPoint] = arrayToSort[endPoint]
 	    arrayToSort[endPoint] = holder
