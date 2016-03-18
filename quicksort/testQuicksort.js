@@ -1,4 +1,4 @@
-describe("quicksort an array of numbers", function(){
+describe("quickSort an array of numbers", function(){
 
     	beforeEach(function(){
 	
@@ -7,17 +7,24 @@ describe("quicksort an array of numbers", function(){
 		}	
 	})
 
+	//have to structure tests where I duplicate array and then compare and
+	//(destructively modified) original because quickSort does not return
+	//array
 	it("can deal with arrays where there are no repeating values", function(){
 		var test_array = [5, 29, 100, 0, 15, 76, 3000, 12, 75, 800, 1021, 18]	
-			
-		expect(quicksort(test_array)).toEqual(test_array.sort(this.comparison_basis))
+		var arrayDuplicate = test_array
+		quickSort(test_array, 0, (test_array.length - 1), comparisonOperator)	
+
+		expect(test_array).toEqual(arrayDuplicate.sort(this.comparison_basis))
 	})
 
 	it("can deal with duplicate values", function(){
 		var test_array = [5, 100, 100, 0, 15, 76, 3000, 12, 75, 75, 1021, 18, 76]	
+		var arrayDuplicate = test_array
+		quickSort(test_array, 0, (test_array.length - 1), comparisonOperator)	
 	
+		expect(test_array).toEqual(arrayDuplicate.sort(this.comparison_basis))
 	
-		expect(quicksort(test_array)).toEqual(test_array.sort(this.comparison_basis))
 	})
 
 	it("can deal with a very large number of values", function(){
@@ -26,8 +33,11 @@ describe("quicksort an array of numbers", function(){
 		// Generate value between 0 and 1000: 10,000 times
 	   		test_array[i] = Math.floor(Math.random() * 1000)
 	    	}
-		expect(quicksort(test_array)).toEqual(test_array.sort(this.comparison_basis))
 
+		var arrayDuplicate = test_array
+		quickSort(test_array, 0, (test_array.length - 1), comparisonOperator)	
+
+		expect(test_array).toEqual(arrayDuplicate.sort(this.comparison_basis))
 	})
 
 
