@@ -19,16 +19,16 @@
  */
 
 
-var quickSort = function(arrayToSort, lowerBound, upperBound, comparisonOperator){
+var quickSort = function(arrayToSort, lowerBound, upperBound){
 
-    if(lowerBound < upperBound){
 
-    var pivot = partition(arrayToSort, lowerBound, upperBound, comparisonOperator)
-	console.log(pivot)
+    var pivot = partition(arrayToSort, lowerBound, upperBound)
     //sort right and left side partitions recursively
-    return quickSort(arrayToSort, lowerBound, pivot - 1, comparisonOperator)
-    return quickSort(arrayToSort, pivot + 1, upperBound, comparisonOperator)
-   
+	if(lowerBound < pivot - 1){
+    	quickSort(arrayToSort, lowerBound, pivot - 1)
+	}
+	if(pivot < upperBound){
+    	quickSort(arrayToSort, pivot, upperBound)
     }
 
 }
@@ -36,60 +36,45 @@ var quickSort = function(arrayToSort, lowerBound, upperBound, comparisonOperator
 //partition into two arrays
 //everything in segment to left of pivot is < pivot value and vice-versa for
 //right side
-var partition = function(arrayToSort, lowerBound, upperBound, comparisonOperator){
-
-    var pivot = medianOfThree(arrayToSort)
-
-   --lowerBound;
-   ++upperBound;
-
-    do{
-	//checking to see if values are on right side of their pivot
-	do{
-		
-		--upperBound;
-
-	   }while(comparisonOperator(arrayToSort[upperBound], pivot) > 0)
-
-	do{
-	    	++lowerBound;
+var partition = function(arrayToSort, lowerBound, upperBound){
 	
-	   }while(comparisonOperator(arrayToSort[lowerBound], pivot) < 0)
+	var left = lowerBound
+	var right = upperBound
+    var pivot = medianOfThree(arrayToSort)
+	var holder = null
 
-	if(lowerBound >= upperBound){
+	while(left <= right){
+	//checking to see if values are on right side of their pivot
+		while(arrayToSort[right] > pivot){
+			
+			--right;
 
-		break	
-	}
-	else{
-	    // switch the values whenver you generate two on wrong side of pivot
-	    var holder = arrayToSort[lowerBound]
-	    arrayToSort[lowerBound] = arrayToSort[upperBound]
-	    arrayToSort[upperBound] = holder
-	}
+		}
+
+		while(arrayToSort[left] < pivot){
+
+			++left;
+		}
+
+		if(left <= right){
+
+			// switch the values whenver you generate two on wrong side of pivot
+			holder = arrayToSort[left]
+			arrayToSort[left] = arrayToSort[right]
+			arrayToSort[right] = holder
+			++left;
+			--right;
+
+		}
    //not expecting the conditional to break out--waiting for "break" to trigger
-    } while(1)
+    } 
 
-    return upperBound;
+    return left;
 
 }
 
 
 //utility functions
-
-
-var comparisonOperator = function(value1, value2){
-    
-	if(value1 > value2){
-	    return 1
-	}   
-	else if (value2 > value1){
-	    return -1
-	}
-	else{
-	    return 0
-	}
-}
-
 
 
 //Building a quick insertion sort algorithm for the hell of it and to help derive median value in
