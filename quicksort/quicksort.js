@@ -90,7 +90,7 @@ var comparisonOperator = function(value1, value2){
 	}
 }
 
-var insertionSort = function(arrayToSort){
+
 
 //Building a quick insertion sort algorithm for the hell of it and to help derive median value in
 // array
@@ -105,6 +105,8 @@ var insertionSort = function(arrayToSort){
 // This has nice side effect of deleting current's original
 // // position, so the shifting takes place in the original array-- don't have
 // to create new one.  Swapping action means you  don't have to worry about indexing out of your array
+
+var insertionSort = function(arrayToSort){
 
     for(var current = 1; current < arrayToSort.length; current++){
 
@@ -122,6 +124,8 @@ var insertionSort = function(arrayToSort){
 //need this for my median of three method
 //Select three elements from array at random
 //get the middle (median) value of those three
+//uses insertion sort method from above (overkill for thre elements but
+//interesting)
 var medianOfThree = function(arrayOfNumbers){
 	//select three random values
 	var random_values = []
