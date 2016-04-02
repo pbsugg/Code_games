@@ -17,6 +17,23 @@
  *
 */
 
+var heapSort = function(array){
+	buildHeap(array);
+	for( var i = (array.length -1); i >= 1; --i ){
+		//swap i and beginning of array
+		var temp = array[0]
+		array[0] = array[i]
+		array[i] = temp 
+		//re-heap everything from i down to 0
+		heapify(array, 0, i)
+}
+
+var buildHeap = function(array){
+	var index = ((array.length / 2) - 1)
+	for (var index; index >= 0; --index){
+		heapify(array, index, array.length)	
+	}
+}
 
 var heapify = function(array, current, max){
 	// these are index values of left and right children
