@@ -15,8 +15,7 @@ describe("mergeSort an array of numbers", function(){
 		for(var i = 0; i < test_array.length; i++){
 			arrayDuplicate[i] = test_array[i];
 		}
-		var resultArray = []
-		mergeSort(test_array, 0, (test_array.length - 1), resultArray)	
+		heapSort(test_array)
 
 		expect(test_array).toEqual(arrayDuplicate.sort(this.comparison_basis))
 	})
@@ -27,8 +26,7 @@ describe("mergeSort an array of numbers", function(){
 		for(var i = 0; i < test_array.length; i++){
 			arrayDuplicate[i] = test_array[i];
 		}
-		var resultArray = []
-		mergeSort(test_array, 0, (test_array.length - 1), resultArray)	
+		heapSort(test_array)
 	
 		expect(test_array).toEqual(arrayDuplicate.sort(this.comparison_basis))
 	
