@@ -17,38 +17,42 @@
  *
 */
 
-var heapSort = function(array){
-	buildHeap(array);
-	for( var i = (array.length -1); i >= 1; --i ){
+var heapSort = function(array, length){
+	buildHeap(array, length);
+	console.log(array)
+	for( var i = (length - 1); i >= 1; --i ){
 		//swap i and beginning of array
 		var temp = array[0]
 		array[0] = array[i]
 		array[i] = temp 
 		//re-heap everything from i down to 0
 		heapify(array, 0, i)
+	}
 }
 
-var buildHeap = function(array){
-	var index = ((array.length / 2) - 1)
-	for (var index; index >= 0; --index){
-		heapify(array, index, array.length)	
+var buildHeap = function(array, length){
+	var index = ((length / 2) - 1)
+	for (index; index >= 0; --index){
+		heapify(array, index, length)	
 	}
 }
 
 var heapify = function(array, current, max){
 	// these are index values of left and right children
-	largest = current
-	left = (2 * current) + 1
-	right = (2 * current) + 2
+	var largest = current 
+	var left = (2 * current) + 1
+	var right = (2 * current) + 2
 	
 	if(left < max && array[left] > array[current]){
 		largest = left
+	}
 	if(right < max && array[right] > array[current]){
 		largest = right 
 	}
+
 	if(largest != current){
 		// swap these two values
-		temp = current
+		temp = array[current]
 		array[current] = array[largest]
 		array[largest] = temp
 		//recurse on the next largest value
